@@ -10,11 +10,16 @@
   width: 380px;
   height: 100%;
   background: var(--clr-primary);
+  padding: 40px 24px;
+}
+
+.panels__wrapper {
+  width: 284px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 13px;
-  padding: 40px 24px;
+  margin: 0 auto;
 }
 
 .panels__header {
@@ -35,4 +40,28 @@
   font-size: .875rem;
   line-height: 1rem;
   text-align: center;
+}
+
+.panels__agreement {
+  width: inherit;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.panels__agreement label {
+  max-width: 175px;
+  font-size: .875rem;
+  color: #565656;
+}
+
+.panels__btn {
+  width: inherit;
+  height: 52px;
+  background: transparent;
+  border: 1px solid #000;
+  font-weight: 500;
+  color: #4E4E4E;
+  text-transform: uppercase;
 }
