@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { useKeyDown } from 'react-keyboard-input-hook'
 
 const PromoContext = createContext()
@@ -74,7 +74,6 @@ export const PromoContextProvider = ({ children }) => {
 
   function handleKeyClick(id, value) {
     setNumber(prevNumber => {
-      if (prevNumber.length === 10) setNumberIsCompleted(true)
       const newNumber = [...prevNumber]
       const nextChar = prevNumber.findIndex(el => el === '_')
       
@@ -105,6 +104,12 @@ export const PromoContextProvider = ({ children }) => {
 
     setSelectedKey(parseInt(value))
   }
+
+  useEffect(() => {
+    if (number[number.length - 1] !== '_') {
+      setNumberIsCompleted(true)
+    }
+  }, [number])
 
   return (
     <PromoContext.Provider value={{
