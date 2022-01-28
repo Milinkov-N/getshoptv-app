@@ -1,7 +1,12 @@
 import './promo.css'
 import Keyboard from './Keyboard'
+import useAppContext from '../contexts/AppContext'
 
 export default function Promo() {
+  const { setPromoIsOpened } = useAppContext()
+
+  const closePromo = () => setPromoIsOpened(false)
+
   return (
     <div className="promo__wrapper">
       <div className="promo__panels">
@@ -18,6 +23,11 @@ export default function Promo() {
           </div>
           <button className="panels__btn" disabled>Подтвердить номер</button>
         </div> 
+      </div>
+      <button className="promo__close-btn" onClick={ closePromo }>&times;</button>
+      <div className="promo__qr-code">
+        <p>Сканируйте qr-код для получения дополнительной информации</p>
+        <img src="/qr-code.jpg" />
       </div>
     </div>
   )

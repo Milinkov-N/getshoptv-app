@@ -59,9 +59,52 @@
 .panels__btn {
   width: inherit;
   height: 52px;
-  background: transparent;
+  background: #000;
   border: 1px solid #000;
   font-weight: 500;
-  color: #4E4E4E;
+  color: #fff;
   text-transform: uppercase;
+}
+
+.panels__btn:disabled {
+  --disabled-color: #4E4E4E;
+  background: transparent;
+  border: 1px solid var(--disabled-color);
+  color: var(--disabled-color);
+  cursor: unset;
+}
+
+.promo__close-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 88px;
+  height: 52px;
+  background: #fff;
+  border: 2px #000 solid;
+  font-size: 2.875rem;
+  line-height: 1;
+}
+
+.promo__qr-code {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 314px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+}
+
+.promo__qr-code p {
+  font-weight: 500;
+  line-height: 19px;
+  text-align: right;
+  text-transform: uppercase;
+  margin-right: 10px;
+}
+
+.promo__qr-code img {
+  width: auto;
+  height: inherit;
 }
