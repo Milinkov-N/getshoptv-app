@@ -14,16 +14,50 @@ export const PromoContextProvider = ({ children }) => {
   const handleKeyDown = useCallback(({ keyName }) => {
     switch (keyName) {
       case 'ArrowDown':
-        setSelectedKey(key => key + 3)
+        setSelectedKey(key => {
+          switch (key) {
+            case 10:
+              return 1
+            case 11:
+              return 3
+            case 7, 8:
+              return 10
+            case 9:
+              return 11
+            default:
+              return key + 3
+          }
+        })
         break;
       case 'ArrowUp':
-        setSelectedKey(key => key - 3)
+        setSelectedKey(key => {
+          switch (key) {
+            case 1:
+              return 10
+            case 2:
+              return 10
+            case 3:
+              return 11
+            case 11:
+              return 9
+            default:
+              return key - 3
+          }
+        })
         break;
       case 'ArrowLeft':
-        setSelectedKey(key => key - 1)
+        setSelectedKey(key => {
+          if (key === 1) return 11
+
+          return key - 1
+        })
         break;
       case 'ArrowRight':
-        setSelectedKey(key => key + 1)
+        setSelectedKey(key => {
+          if (key === 11) return 1
+          
+          return key + 1
+        })
         break;
     
       default:
@@ -39,14 +73,14 @@ export const PromoContextProvider = ({ children }) => {
       const nextChar = prevNumber.findIndex(el => el === '_')
     
       if (nextChar === -1) {
-        if(key.id === 'erase') {
+        if(key.id === 10) {
           newNumber.pop()
           return [...newNumber, '_']
         }
         return prevNumber
       }
     
-      if(key.id === 'erase') {
+      if(key.id === 10) {
         if (nextChar === 0) return prevNumber
     
         newNumber[nextChar - 1] = '_'

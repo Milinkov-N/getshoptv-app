@@ -4,47 +4,47 @@ import './keyboard.css'
 export default function Keyboard() {
   const keys = [
     {
-      id: 'key-1',
+      id: 1,
       value: '1',
     },
     {
-      id: 'key-2',
+      id: 2,
       value: '2',
     },
     {
-      id: 'key-3',
+      id: 3,
       value: '3',
     },
     {
-      id: 'key-4',
+      id: 4,
       value: '4',
     },
     {
-      id: 'key-5',
+      id: 5,
       value: '5',
     },
     {
-      id: 'key-6',
+      id: 6,
       value: '6',
     },
     {
-      id: 'key-7',
+      id: 7,
       value: '7',
     },
     {
-      id: 'key-8',
+      id: 8,
       value: '8',
     },
     {
-      id: 'key-9',
+      id: 9,
       value: '9',
     },
     {
-      id: 'erase',
+      id: 10,
       value: 'Стереть',
     },
     {
-      id: 'key-0',
+      id: 11,
       value: '0',
     },
   ]
@@ -56,7 +56,7 @@ export default function Keyboard() {
       {keys.map(key => (
         <button
           key={ key.id }
-          className={ `keyboard__key ${ key.id === 'erase' ? 'col-span-2' : '' } ${ selectedKey == key.value ? 'selected' : '' }` }
+          className={ `keyboard__key ${ key.id === 10 ? 'col-span-2' : '' } ${ selectedKey === key.id ? 'selected' : '' }` }
           id={ key.id }
           onClick={ () => handleKeyClick(key) }
         >
