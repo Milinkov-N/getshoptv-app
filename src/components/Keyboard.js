@@ -49,46 +49,20 @@ export default function Keyboard() {
     },
   ]
 
-  const { setNumber } = usePromoContext()
+  const { handleKeyClick, selectedKey } = usePromoContext()
 
   return (
     <div className="keyboard">
       {keys.map(key => (
         <button
           key={ key.id }
-          className={ `keyboard__key ${ key.id === 'erase' ? 'col-span-2' : '' }` }
+          className={ `keyboard__key ${ key.id === 'erase' ? 'col-span-2' : '' } ${ selectedKey == key.value ? 'selected' : '' }` }
           id={ key.id }
-          onClick={ () => {
-            setNumber(prevNumber => handler(prevNumber, key))
-          }}
+          onClick={ () => handleKeyClick(key) }
         >
           { key.value }
         </button>
       ))}
     </div>
   )
-}
-
-function handler(prevNumber, key) {
-  const newNumber = [...prevNumber]
-  const nextChar = prevNumber.findIndex(el => el === '_')
-
-  if (nextChar === -1) {
-    if(key.id === 'erase') {
-      newNumber.pop()
-      return [...newNumber, '_']
-    }
-    return prevNumber
-  }
-
-  if(key.id === 'erase') {
-    if (nextChar === 0) return prevNumber
-    
-    newNumber[nextChar - 1] = '_'
-    return [...newNumber]
-  }
-
-  newNumber[nextChar] = key.value
-
-  return [...newNumber]
 }

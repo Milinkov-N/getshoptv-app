@@ -16,7 +16,6 @@ export default function Content() {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          allow="autoplay"
         />
         <Banner />
       </>

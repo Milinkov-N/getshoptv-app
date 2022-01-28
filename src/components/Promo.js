@@ -15,7 +15,7 @@ export default function Promo() {
         <button className="promo__close-btn" onClick={ closePromo }>&times;</button>
         <div className="promo__qr-code">
           <p>Сканируйте qr-код для получения дополнительной информации</p>
-          <img src="/qr-code.jpg" />
+          <img src="/qr-code.jpg" alt='qr-code' />
         </div>
       </div>
     </PromoContextProvider>

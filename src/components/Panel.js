@@ -5,7 +5,7 @@ import './panel.css'
 export default function Panel() {
   const { number: n } = usePromoContext()
 
-  console.log(n);
+  // console.log(n);
 
   return (
     <div className="panel">
