@@ -8,7 +8,16 @@ export default function Content() {
   const VideoBanner = () => {
     return (
       <>
-        <div className="video" />
+        <iframe
+          width="1280"
+          height="720"
+          src="https://www.youtube.com/embed/M7FIvfx5J10?autoplay=1&mute=1"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          allow="autoplay"
+        />
         <Banner />
       </>
     )
