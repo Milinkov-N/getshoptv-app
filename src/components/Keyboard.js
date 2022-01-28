@@ -58,7 +58,8 @@ export default function Keyboard() {
           key={ key.id }
           className={ `keyboard__key ${ key.id === 10 ? 'col-span-2' : '' } ${ selectedKey === key.id ? 'selected' : '' }` }
           id={ key.id }
-          onClick={ () => handleKeyClick(key) }
+          onClick={ () => handleKeyClick(key.id, key.value) }
+          onKeyUp={ e => e.target.blur() }
         >
           { key.value }
         </button>

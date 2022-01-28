@@ -3,9 +3,9 @@ import Keyboard from './Keyboard'
 import './panel.css'
 
 export default function Panel() {
-  const { number: n } = usePromoContext()
+  const { number: n, numberIsCompleted, policyIsChecked, setPolicyIsChecked } = usePromoContext()
 
-  // console.log(n);
+  const isDisabled = (numberIsCompleted && policyIsChecked)
 
   return (
     <div className="panel">
@@ -19,10 +19,10 @@ export default function Panel() {
         <span className="panel__desc">и с Вами свяжется наш менеждер для дальнейшей консультации</span>
         <Keyboard />
         <div className="panel__agreement">
-          <input type='checkbox' name='checkbox' id='checkbox' />
+          <input type='checkbox' name='checkbox' id='checkbox' onChange={ e => setPolicyIsChecked(e.target.checked) } />
           <label htmlFor='checkbox'>Согласие на обработку персональных данных</label>
         </div>
-        <button className="panel__btn" disabled>Подтвердить номер</button>
+        <button className="panel__btn" disabled={ !isDisabled }>Подтвердить номер</button>
       </div> 
     </div>
   )

@@ -9,6 +9,8 @@ export default function usePromoContext() {
 
 export const PromoContextProvider = ({ children }) => {
   const [number, setNumber] = useState(['_', '_', '_', '_', '_', '_', '_', '_', '_', '_'])
+  const [numberIsCompleted, setNumberIsCompleted] = useState(false)
+  const [policyIsChecked, setPolicyIsChecked] = useState(false)
   const [selectedKey, setSelectedKey] = useState(5)
 
   const handleKeyDown = useCallback(({ keyName }) => {
@@ -59,6 +61,9 @@ export const PromoContextProvider = ({ children }) => {
           return key + 1
         })
         break;
+      case 'Enter':
+        handleKeyClick(selectedKey, selectedKey)
+        break;
     
       default:
         break;
@@ -67,32 +72,38 @@ export const PromoContextProvider = ({ children }) => {
 
   useKeyDown(handleKeyDown)
 
-  function handleKeyClick(key) {
+  function handleKeyClick(id, value) {
     setNumber(prevNumber => {
+      if (prevNumber.length === 10) setNumberIsCompleted(true)
       const newNumber = [...prevNumber]
       const nextChar = prevNumber.findIndex(el => el === '_')
-    
+      
+      // Если курсор находится в конце номера
       if (nextChar === -1) {
-        if(key.id === 10) {
+        // Если нажата кнопкть 'Стереть', то заменяем последний символ на нижнее подчеркивание
+        if(id === 10) {
+          setNumberIsCompleted(false)
           newNumber.pop()
           return [...newNumber, '_']
         }
         return prevNumber
       }
-    
-      if(key.id === 10) {
+      
+      // Если нажата кнопкть 'Стереть'
+      if(id === 10) {
+        // Если курстор стоит на первой цифре,то  не мутируем state
         if (nextChar === 0) return prevNumber
     
         newNumber[nextChar - 1] = '_'
         return [...newNumber]
       }
     
-      newNumber[nextChar] = key.value
+      newNumber[nextChar] = value
     
       return [...newNumber]
     })
 
-    setSelectedKey(key.value)
+    setSelectedKey(parseInt(value))
   }
 
   return (
@@ -101,6 +112,9 @@ export const PromoContextProvider = ({ children }) => {
       setNumber,
       handleKeyClick,
       selectedKey,
+      numberIsCompleted,
+      policyIsChecked,
+      setPolicyIsChecked
     }}>
       { children }
     </PromoContext.Provider>
