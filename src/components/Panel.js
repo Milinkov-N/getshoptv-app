@@ -1,19 +1,27 @@
 import useAppContext from '../contexts/AppContext'
 import Dialog from './Dialog'
 import FinalScreen from './FinalScreen'
+import { CSSTransition } from 'react-transition-group'
 import './panel.css'
 
 export default function Panel() {
-  const { dialogIsCompleted, setDialogIsCompleted } = useAppContext()
+  const { dialogIsCompleted, setDialogIsCompleted, sliderIsShowing } = useAppContext()
 
   return (
-    <div className="panel">
-      <div className="panel__wrapper">
-        { !dialogIsCompleted
-            ? <Dialog numberComfirmHandler={ () => setDialogIsCompleted(true) } />
-            : <FinalScreen />
-        }
+    <CSSTransition
+    in={ !sliderIsShowing }
+    timeout={ 300 }
+    classNames="panel"
+    unmountOnExit
+    >
+      <div className="panel">
+        <div className="panel__wrapper">
+          { !dialogIsCompleted
+              ? <Dialog numberComfirmHandler={ () => setDialogIsCompleted(true) } />
+              : <FinalScreen />
+          }
+        </div>
       </div>
-    </div>
+    </CSSTransition>
   )
 }

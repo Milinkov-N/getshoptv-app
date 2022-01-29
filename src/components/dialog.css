@@ -46,6 +46,30 @@
   color: #565656;
 }
 
+.dialog__agreement input[type="checkbox"] {
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+.dialog__agreement input[type="checkbox"]:checked::after {
+  display: block;
+}
+
+.dialog__agreement input[type="checkbox"]::after {
+  display: none;
+  content: '\f00c';
+  font-family: "Font Awesome 5 Free";
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
 .dialog__btn {
   width: inherit;
   height: 52px;

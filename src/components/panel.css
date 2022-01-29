@@ -1,5 +1,5 @@
 .panel {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 380px;
@@ -17,4 +17,20 @@
   align-items: center;
   gap: 13px;
   margin: 0 auto;
+}
+
+.panel-enter {
+  left: -100%;
+}
+.panel-enter-active {
+  left: 0;
+  transition: .3s left ease-in-out;
+}
+
+.panel-exit {
+  left: 0;
+}
+.panel-exit-active {
+  left: -100%;
+  transition: .3s left ease-in-out;
 }
