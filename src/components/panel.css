@@ -1,8 +1,12 @@
 .panel {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 380px;
   height: 100%;
   background: var(--clr-primary);
   padding: 40px 24px;
+  z-index: 99;
 }
 
 .panel__wrapper {

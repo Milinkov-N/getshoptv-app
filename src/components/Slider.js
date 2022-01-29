@@ -3,7 +3,7 @@ import './slider.css'
 
 // import Swiper core and required modules
 import SwiperCore, {
-  Keyboard,Pagination,Navigation
+  Keyboard, Pagination, Navigation
 } from 'swiper'
 
 // Import Swiper styles
@@ -22,10 +22,10 @@ export default function Slider() {
         slidesPerView={ 1 }
         spaceBetween={ 0 }
         keyboard={{
-          "enabled": true
+          "enabled": false
         }}
         
-        navigation={ true }
+        navigation={ false }
       >
         <SwiperSlide>
           <img src='./slide-1.jpg' alt='slide 1 image' />

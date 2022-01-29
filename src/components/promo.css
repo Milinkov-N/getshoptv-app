@@ -16,6 +16,7 @@
   border: 2px #000 solid;
   font-size: 2.875rem;
   line-height: 1;
+  z-index: 99;
 }
 
 .promo__qr-code {
@@ -26,6 +27,8 @@
   height: 110px;
   display: flex;
   align-items: center;
+  color: #fff;
+  z-index: 99;
 }
 
 .promo__qr-code p {
