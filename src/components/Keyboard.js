@@ -60,6 +60,7 @@ export default function Keyboard() {
           id={ key.id }
           onClick={ () => handleKeyClick(key.id, key.value) }
           onKeyUp={ e => e.target.blur() }
+          onKeyDown={ e => console.log(e.key) }
         >
           { key.value }
         </button>

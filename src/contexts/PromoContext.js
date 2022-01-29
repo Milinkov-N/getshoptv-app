@@ -14,7 +14,21 @@ export const PromoContextProvider = ({ children }) => {
   const [selectedKey, setSelectedKey] = useState(5)
 
   const handleKeyDown = useCallback(({ keyName }) => {
+    // console.log(`pressed ${ keyName === 'Digit1' }`);
     switch (keyName) {
+      case 'Digit1':
+      case 'Digit2':
+      case 'Digit3':
+      case 'Digit4':
+      case 'Digit5':
+      case 'Digit6':
+      case 'Digit7':
+      case 'Digit8':
+      case 'Digit9':
+      case 'Digit0':
+        const keyDigit = keyName.substring(5)
+        handleKeyClick(parseInt(keyDigit), parseInt(keyDigit))
+        break;
       case 'ArrowDown':
         setSelectedKey(key => {
           switch (key) {
@@ -71,7 +85,6 @@ export const PromoContextProvider = ({ children }) => {
       case 'Backspace':
         handleKeyClick(10, 10)
         break;
-    
       default:
         break;
     }
