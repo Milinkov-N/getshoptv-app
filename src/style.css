@@ -30,6 +30,7 @@ body {
   align-items: center;
   border: 3px #000 solid;
   font-family: var(--ff-roboto);
+  overflow: hidden;
 }
 
 button {

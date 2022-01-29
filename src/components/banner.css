@@ -43,3 +43,12 @@
   color: var(--clr-primary);
   cursor: pointer;
 }
+
+.banner-enter {
+  right: -100%;
+}
+
+.banner-enter-active {
+  right: 0;
+  transition: .3s right ease-in-out;
+}
