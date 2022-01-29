@@ -62,7 +62,14 @@ export const PromoContextProvider = ({ children }) => {
         })
         break;
       case 'Enter':
-        handleKeyClick(selectedKey, selectedKey)
+        if (selectedKey === 11) {
+          handleKeyClick(selectedKey, 0)
+        } else {
+          handleKeyClick(selectedKey, selectedKey)
+        } 
+        break;
+      case 'Backspace':
+        handleKeyClick(10, 10)
         break;
     
       default:
@@ -102,7 +109,7 @@ export const PromoContextProvider = ({ children }) => {
       return [...newNumber]
     })
 
-    setSelectedKey(parseInt(value))
+    setSelectedKey(parseInt(id))
   }
 
   useEffect(() => {
