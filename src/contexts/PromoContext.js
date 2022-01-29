@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { useKeyDown } from 'react-keyboard-input-hook'
+import validateNumber from '../utils/validateNumber'
 
 const PromoContext = createContext()
 
@@ -10,11 +11,11 @@ export default function usePromoContext() {
 export const PromoContextProvider = ({ children }) => {
   const [number, setNumber] = useState(['_', '_', '_', '_', '_', '_', '_', '_', '_', '_'])
   const [numberIsCompleted, setNumberIsCompleted] = useState(false)
+  const [numberIsValid, setNumberIsValid] = useState(true)
   const [policyIsChecked, setPolicyIsChecked] = useState(false)
   const [selectedKey, setSelectedKey] = useState(5)
 
   const handleKeyDown = useCallback(({ keyName }) => {
-    // console.log(`pressed ${ keyName === 'Digit1' }`);
     switch (keyName) {
       case 'Digit1':
       case 'Digit2':
@@ -36,7 +37,8 @@ export const PromoContextProvider = ({ children }) => {
               return 1
             case 11:
               return 3
-            case 7, 8:
+            case 7:
+            case 8:
               return 10
             case 9:
               return 11
@@ -126,9 +128,17 @@ export const PromoContextProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    if (number[number.length - 1] !== '_') {
-      setNumberIsCompleted(true)
+    async function fetchData() {
+      if (number[number.length - 1] !== '_') {
+        const { valid } = await validateNumber(number)
+
+        valid ? setNumberIsValid(true) : setNumberIsValid(false) 
+
+        setNumberIsCompleted(true)
+      }
     }
+
+    fetchData()
   }, [number])
 
   return (
@@ -138,6 +148,7 @@ export const PromoContextProvider = ({ children }) => {
       handleKeyClick,
       selectedKey,
       numberIsCompleted,
+      numberIsValid,
       policyIsChecked,
       setPolicyIsChecked
     }}>

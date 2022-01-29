@@ -28,10 +28,24 @@
   text-transform: uppercase;
 }
 
+.panel__number_error {
+  color: red;
+}
+
 .panel__desc {
   font-size: .875rem;
   line-height: 1rem;
   text-align: center;
+}
+
+.panel__error {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 19px;
+  color: red;
 }
 
 .panel__agreement {
