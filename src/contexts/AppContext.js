@@ -10,6 +10,9 @@ export function AppContextProvider({ children }) {
   const [promoIsOpened, setPromoIsOpened] = useState(false)
   const [dialogIsCompleted, setDialogIsCompleted] = useState(false)
   const [sliderIsShowing, setSliderIsShowing] = useState(false)
+  const [bannerIsShowing, setBannerIsShowing] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(true)
+
   return (
     <AppContext.Provider value={{
       promoIsOpened,
@@ -17,7 +20,11 @@ export function AppContextProvider({ children }) {
       dialogIsCompleted,
       setDialogIsCompleted,
       sliderIsShowing,
-      setSliderIsShowing
+      setSliderIsShowing,
+      bannerIsShowing,
+      setBannerIsShowing,
+      isPlaying,
+      setIsPlaying
     }}>
       { children }
     </AppContext.Provider>

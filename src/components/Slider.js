@@ -31,13 +31,13 @@ export default function Slider() {
         navigation={ true }
       >
         <SwiperSlide>
-          <img src='./slide-1.jpg' alt='slide 1 image' />
+          <img src='./slide-1.jpg' alt='slide 1' />
         </SwiperSlide>
         <SwiperSlide>
-          <img src='./slide-2.jpg' alt='slide 2 image' />
+          <img src='./slide-2.jpg' alt='slide 2' />
         </SwiperSlide>
         <SwiperSlide>
-          <img src='./slide-3.jpg' alt='slide 3 image' />
+          <img src='./slide-3.jpg' alt='slide 3' />
         </SwiperSlide>
       </Swiper>
     </>

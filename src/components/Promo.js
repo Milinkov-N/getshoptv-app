@@ -5,9 +5,12 @@ import useAppContext from '../contexts/AppContext'
 import { PromoContextProvider } from '../contexts/PromoContext'
 
 export default function Promo() {
-  const { setPromoIsOpened, sliderIsShowing } = useAppContext()
+  const { setPromoIsOpened, sliderIsShowing, setIsPlaying } = useAppContext()
 
-  const closePromo = () => setPromoIsOpened(false)
+  const closePromo = () => {
+    setIsPlaying(true)
+    setPromoIsOpened(false)
+  }
 
   return (
     <PromoContextProvider>

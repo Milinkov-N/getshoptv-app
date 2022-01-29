@@ -1,16 +1,14 @@
 import useAppContext from '../contexts/AppContext'
-import { useEffect, useState } from 'react'
 import './banner.css'
 
 export default function Banner() {
-  const { setPromoIsOpened } = useAppContext()
-  const [bannerIsShowing, setBannerIsShowing] = useState(false)
+  const { setPromoIsOpened, bannerIsShowing, setBannerIsShowing, setIsPlaying } = useAppContext()
 
-  useEffect(() => {
-    setTimeout(() => setBannerIsShowing(true), 5000)
-  }, [])
-
-  const openPromo = () => setPromoIsOpened(true)
+  const openPromo = () => {
+    setIsPlaying(false)
+    setBannerIsShowing(false)
+    setPromoIsOpened(true)
+  } 
   return (
     <>
       { bannerIsShowing && (
