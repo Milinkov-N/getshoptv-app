@@ -1,6 +1,6 @@
-import Banner from './Banner'
-import Promo from './Promo'
-import useAppContext from '../contexts/AppContext'
+import { Banner } from '..'
+import { Promo } from '..'
+import useAppContext from '../../contexts/AppContext'
 import ReactPlayer from 'react-player/lazy'
 
 export default function Content() {

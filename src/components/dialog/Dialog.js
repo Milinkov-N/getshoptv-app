@@ -1,11 +1,11 @@
-import usePromoContext from '../contexts/PromoContext'
-import Keyboard from './Keyboard'
+import usePromoContext from '../../contexts/PromoContext'
+import { Keyboard } from '..'
 import './dialog.css'
 
 export default function Dialog({ numberComfirmHandler }) {
   const { number: n, numberIsCompleted, numberIsValid, policyIsChecked } = usePromoContext()
 
-  const isDisabled = numberIsCompleted && policyIsChecked
+  const isDisabled = numberIsCompleted && numberIsValid && policyIsChecked
 
   return (
     <>

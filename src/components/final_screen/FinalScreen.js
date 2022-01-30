@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useAppContext from '../contexts/AppContext'
+import useAppContext from '../../contexts/AppContext'
 import './final_screen.css'
 
 export default function FinalScreen() {

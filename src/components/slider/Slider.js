@@ -8,7 +8,7 @@ import SwiperCore, {
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-import useAppContext from '../contexts/AppContext'
+import useAppContext from '../../contexts/AppContext'
 
 SwiperCore.use([Keyboard,Pagination,Navigation])
 

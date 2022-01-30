@@ -1,8 +1,8 @@
 import './promo.css'
-import Panel from './Panel'
-import Slider from './Slider'
-import useAppContext from '../contexts/AppContext'
-import { PromoContextProvider } from '../contexts/PromoContext'
+import { Panel } from '..'
+import { Slider } from '..'
+import useAppContext from '../../contexts/AppContext'
+import { PromoContextProvider } from '../../contexts/PromoContext'
 import { CSSTransition } from 'react-transition-group'
 
 export default function Promo() {

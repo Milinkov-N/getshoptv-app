@@ -1,4 +1,4 @@
-import usePromoContext from '../contexts/PromoContext'
+import usePromoContext from '../../contexts/PromoContext'
 import './keyboard.css'
 
 export default function Keyboard() {

@@ -1,6 +1,6 @@
-import useAppContext from '../contexts/AppContext'
-import Dialog from './Dialog'
-import FinalScreen from './FinalScreen'
+import useAppContext from '../../contexts/AppContext'
+import { Dialog } from '..'
+import { FinalScreen } from '..'
 import { CSSTransition } from 'react-transition-group'
 import './panel.css'
 
