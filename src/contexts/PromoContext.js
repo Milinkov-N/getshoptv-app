@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { useKeyDown } from 'react-keyboard-input-hook'
 import validateNumber from '../utils/validateNumber'
+import useAppContext from './AppContext'
 
 const PromoContext = createContext()
 
@@ -14,6 +15,8 @@ export const PromoContextProvider = ({ children }) => {
   const [numberIsValid, setNumberIsValid] = useState(true)
   const [policyIsChecked, setPolicyIsChecked] = useState(false)
   const [selectedKey, setSelectedKey] = useState(5)
+
+  const { setDialogIsCompleted, closePromo } = useAppContext()
 
   const handleKeyDown = useCallback(({ keyName }) => {
     switch (keyName) {
@@ -91,11 +94,23 @@ export const PromoContextProvider = ({ children }) => {
         })
         break;
       case 'Enter':
-        if (selectedKey === 11) {
-          handleKeyClick(selectedKey, 0)
-        } else {
-          handleKeyClick(selectedKey, selectedKey)
-        } 
+        switch (selectedKey) {
+          case 13:
+            closePromo()
+            break;
+          case 12:
+            const isDisabled = numberIsValid && setNumberIsCompleted && policyIsChecked
+            if (!isDisabled) return
+
+            setDialogIsCompleted(true)
+            break;
+          case 11:
+            handleKeyClick(selectedKey, 0)
+            break;
+          default:
+            handleKeyClick(selectedKey, selectedKey)
+            break;
+        }
         break;
       case 'Backspace':
         handleKeyClick(10, 10)

@@ -5,7 +5,7 @@ import usePromoContext from '../../contexts/PromoContext'
 import { CSSTransition } from 'react-transition-group'
 
 export default function Promo() {
-  const { setPromoIsOpened, sliderIsShowing, setIsPlaying, setDialogIsCompleted } = useAppContext()
+  const { sliderIsShowing, setDialogIsCompleted, closePromo } = useAppContext()
   const { selectedKey } = usePromoContext()
 
   const keys = [
@@ -68,11 +68,6 @@ export default function Promo() {
       <Keyboard keys={ keys } />
     </Dialog>
   )
-
-  const closePromo = () => {
-    setIsPlaying(true)
-    setPromoIsOpened(false)
-  }
 
   return (
     <div className="promo__wrapper">

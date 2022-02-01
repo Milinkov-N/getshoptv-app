@@ -13,6 +13,11 @@ export function AppContextProvider({ children }) {
   const [bannerIsShowing, setBannerIsShowing] = useState(false)
   const [isPlaying, setIsPlaying] = useState(true)
 
+  const closePromo = () => {
+    setIsPlaying(true)
+    setPromoIsOpened(false)
+  }
+
   return (
     <AppContext.Provider value={{
       promoIsOpened,
@@ -24,7 +29,8 @@ export function AppContextProvider({ children }) {
       bannerIsShowing,
       setBannerIsShowing,
       isPlaying,
-      setIsPlaying
+      setIsPlaying,
+      closePromo
     }}>
       { children }
     </AppContext.Provider>
