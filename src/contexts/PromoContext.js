@@ -33,15 +33,19 @@ export const PromoContextProvider = ({ children }) => {
       case 'ArrowDown':
         setSelectedKey(key => {
           switch (key) {
-            case 10:
+            case 13:
+              return 1
+            case 12:
               return 1
             case 11:
-              return 3
-            case 7:
-            case 8:
-              return 10
+              return 12
+            case 10:
+              return 12
             case 9:
-              return 11
+              return 12 
+            case 8:
+            case 7:  
+              return 10 
             default:
               return key + 3
           }
@@ -50,14 +54,16 @@ export const PromoContextProvider = ({ children }) => {
       case 'ArrowUp':
         setSelectedKey(key => {
           switch (key) {
-            case 1:
+            case 13:
+              return 12
+            case 12:
               return 10
-            case 2:
-              return 10
-            case 3:
-              return 11
             case 11:
               return 9
+            case 3:
+            case 2:
+            case 1:
+              return 12
             default:
               return key - 3
           }
@@ -65,16 +71,23 @@ export const PromoContextProvider = ({ children }) => {
         break;
       case 'ArrowLeft':
         setSelectedKey(key => {
-          if (key === 1) return 11
+          if (key === 1) return 13
 
           return key - 1
         })
         break;
       case 'ArrowRight':
         setSelectedKey(key => {
-          if (key === 11) return 1
-          
-          return key + 1
+          switch (key) {
+            case 11:
+              return 12
+            case 12:
+              return 13
+            case 13:
+              return 1
+            default:
+              return key + 1
+          }
         })
         break;
       case 'Enter':
@@ -147,6 +160,7 @@ export const PromoContextProvider = ({ children }) => {
       setNumber,
       handleKeyClick,
       selectedKey,
+      setSelectedKey,
       numberIsCompleted,
       numberIsValid,
       policyIsChecked,

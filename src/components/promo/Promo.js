@@ -1,11 +1,12 @@
 import './promo.css'
 import { Panel, Slider, Dialog, Keyboard } from '..'
 import useAppContext from '../../contexts/AppContext'
-import { PromoContextProvider } from '../../contexts/PromoContext'
+import usePromoContext from '../../contexts/PromoContext'
 import { CSSTransition } from 'react-transition-group'
 
 export default function Promo() {
   const { setPromoIsOpened, sliderIsShowing, setIsPlaying, setDialogIsCompleted } = useAppContext()
+  const { selectedKey } = usePromoContext()
 
   const keys = [
     {
@@ -52,6 +53,14 @@ export default function Promo() {
       id: 11,
       value: '0',
     },
+    {
+      id: 12,
+      value: 'Подтвердить номер',
+    },
+    {
+      id: 13,
+      value: 'close',
+    },
   ]
 
   const DialogComp = () => (
@@ -66,19 +75,17 @@ export default function Promo() {
   }
 
   return (
-    <PromoContextProvider>
-      <div className="promo__wrapper">
-        <Slider />
-        <Panel Dialog={ DialogComp } />
-        <button
-          className="promo__close-btn"
-          onClick={ closePromo }
-        >
-          &times;
-        </button>
-        <QRCode sliderIsShowing={ sliderIsShowing } />
-      </div>
-    </PromoContextProvider>
+    <div className="promo__wrapper">
+      <Slider />
+      <Panel Dialog={ DialogComp } />
+      <button
+        className={ `promo__close-btn ${ selectedKey === 13 ? 'selected' : '' }` }
+        onClick={ closePromo }
+      >
+        &times;
+      </button>
+      <QRCode sliderIsShowing={ sliderIsShowing } />
+    </div>
   )
 }
 
