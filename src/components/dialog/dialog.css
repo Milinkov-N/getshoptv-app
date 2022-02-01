@@ -59,11 +59,11 @@
 }
 
 .dialog__agreement input[type="checkbox"]:checked::after {
-  display: block;
+  opacity: 1;
 }
 
 .dialog__agreement input[type="checkbox"]::after {
-  display: none;
+  opacity: 0;
   content: '\f00c';
   font-family: "Font Awesome 5 Free";
   font-size: 1.5rem;

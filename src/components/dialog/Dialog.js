@@ -1,7 +1,8 @@
 import usePromoContext from '../../contexts/PromoContext'
+import { Keyboard } from '..'
 import './dialog.css'
 
-export default function Dialog({ numberComfirmHandler, children }) {
+export default function Dialog({ numberComfirmHandler  }) {
   const { number: n, numberIsCompleted, numberIsValid, policyIsChecked, selectedKey } = usePromoContext()
 
   const isDisabled = numberIsCompleted && numberIsValid && policyIsChecked
@@ -15,7 +16,7 @@ export default function Dialog({ numberComfirmHandler, children }) {
         { `+7 (${n[0]}${n[1]}${n[2]}) ${n[3]}${n[4]}${n[5]}-${n[6]}${n[7]}-${n[8]}${n[9]}` }
       </div>
       <span className="dialog__desc">и с Вами свяжется наш менеждер для дальнейшей консультации</span>
-      { children }
+      <Keyboard />
       { numberIsValid ? <Checkbox /> : <Error /> }
       <button
         className={ `dialog__btn ${ selectedKey === 12 ? 'selected' : '' }` }

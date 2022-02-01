@@ -1,9 +1,9 @@
 import useAppContext from '../../contexts/AppContext'
-import { FinalScreen } from '..'
+import { Dialog, FinalScreen } from '..'
 import { CSSTransition } from 'react-transition-group'
 import './panel.css'
 
-export default function Panel({ Dialog }) {
+export default function Panel() {
   const { dialogIsCompleted, setDialogIsCompleted, sliderIsShowing } = useAppContext()
 
   return (
@@ -16,7 +16,7 @@ export default function Panel({ Dialog }) {
       <div className="panel">
         <div className="panel__wrapper">
           { !dialogIsCompleted
-              ? <Dialog />
+              ? <Dialog numberComfirmHandler={ () => setDialogIsCompleted(true) } />
               : <FinalScreen />
           }
         </div>

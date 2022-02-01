@@ -118,7 +118,7 @@ export const PromoContextProvider = ({ children }) => {
       default:
         break;
     }
-  }, [selectedKey])
+  }, [selectedKey, closePromo, numberIsValid, policyIsChecked, setDialogIsCompleted])
 
   useKeyDown(handleKeyDown)
 
@@ -158,9 +158,9 @@ export const PromoContextProvider = ({ children }) => {
   useEffect(() => {
     async function fetchData() {
       if (number[number.length - 1] !== '_') {
-        const { valid } = await validateNumber(number)
+        const { IsValid } = await validateNumber(number)
 
-        valid ? setNumberIsValid(true) : setNumberIsValid(false) 
+        IsValid === 'Yes' ? setNumberIsValid(true) : setNumberIsValid(false) 
 
         setNumberIsCompleted(true)
       }
