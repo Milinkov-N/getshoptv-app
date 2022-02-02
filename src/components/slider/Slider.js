@@ -8,13 +8,10 @@ import SwiperCore, {
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-import useAppContext from '../../contexts/AppContext'
 
 SwiperCore.use([Keyboard,Pagination,Navigation])
 
 export default function Slider() {
-  const { sliderIsShowing } = useAppContext()
-
   return (
     <>
       <Swiper
@@ -22,9 +19,9 @@ export default function Slider() {
         slidesPerView={ 1 }
         spaceBetween={ 0 }
         keyboard={{
-          "enabled": sliderIsShowing
+          "enabled": true
         }}
-        navigation={ sliderIsShowing }
+        navigation={ true }
       >
         <SwiperSlide>
           <img src='./slide-1.jpg' alt='slide 1' />

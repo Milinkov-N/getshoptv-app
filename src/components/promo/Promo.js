@@ -10,7 +10,7 @@ export default function Promo() {
 
   return (
     <div className="promo__wrapper">
-      <Slider />
+      { sliderIsShowing ? <Slider /> : <img className='promo__backgorund-image' src='/slide-1.jpg' /> }
       <Panel />
       <button
         className={ `promo__close-btn ${ selectedKey === 13 ? 'selected' : '' }` }
